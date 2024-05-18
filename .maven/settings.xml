@@ -8,8 +8,8 @@
     </server>
     <server>
       <id>anypoint-exchange-v3</id>
-      <username>${env.PLATFORM_USERNAME}</username>
-      <password>${env.PLATFORM_PASSWORD}</password>
+      <username>~~~Client~~~</username>
+      <password>${CONNECTED_APP_CLIENT_ID}~?~${CONNECTED_APP_CLIENT_SECRET}</password>
     </server>
 	<server>
       <id>Repository</id>
