@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <settings>
   <servers>
-<!--     <server>
+ <server>
       <id>MuleRepository</id>
       <username>${env.NEXUS_USERNAME}</username>
       <password>${env.NEXUS_PASSWORD}</password>
     </server>
-    <server>
+<!--     <server>
       <id>anypoint-exchange-v3</id>
       <username>~~~Client~~~</username>
       <password>${CONNECTED_APP_CLIENT_ID}~?~${CONNECTED_APP_CLIENT_SECRET}</password>
