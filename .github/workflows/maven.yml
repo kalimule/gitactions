@@ -38,7 +38,7 @@ jobs:
         path: staging
  
     - name: Deploy with Maven
-      run: mvn clean -B deploy -Dmuledeploy -s .maven/settings.xml
+      run: mvn clean -B deploy -X -Dmuledeploy -s .maven/settings.xml
       env:
           PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
           PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
