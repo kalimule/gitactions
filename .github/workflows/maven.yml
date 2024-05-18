@@ -1,0 +1,45 @@
+
+name: deploy to cloudhub
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+        PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
+        PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+   
+    steps:
+    - name: checkout to repository
+      uses: actions/checkout@4
+
+    - name: Cache the Dependencies
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn clean -B package -s .maven/settings.xml
+
+    - name: upload artifacts
+      run:  mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v4
+      with:
+        name: package
+        path: staging
+ 
+    - name: Deploy with Maven
+      run: mvn clean -B package deploy -Dmuledeploy -s .maven/settings.xml
+      env:
+          PLATFORM_USERNAME: ${{ secrets.PLATFORM_USERNAME }}
+          PLATFORM_PASSWORD: ${{ secrets.PLATFORM_PASSWORD }}
+
