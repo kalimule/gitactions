@@ -11,6 +11,11 @@
       <username>${env.PLATFORM_USERNAME}</username>
       <password>${env.PLATFORM_PASSWORD}</password>
     </server>
+	<server>
+      <id>Repository</id>
+      <username>~~~Client~~~</username>
+      <password>${client.id}~?~${client.secret}</password>
+    </server>
   </servers>
   <pluginGroups>
     <pluginGroup>org.mule.tools</pluginGroup>
